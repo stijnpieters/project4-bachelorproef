@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: docker-registry.p-t9c4v-pipeline/stijnpietersnmct/project4-nginx:latest
+      - image: project4-nginx
         name: nginx
         ports:
         - containerPort: 80
