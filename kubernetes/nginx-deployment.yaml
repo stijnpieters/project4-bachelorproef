@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: rancher/project4-webapp:latest
+      - image: docker-registry.p-t9c4v-pipeline/stijnpietersnmct/project4-nginx:latest
         name: nginx
         ports:
         - containerPort: 80
