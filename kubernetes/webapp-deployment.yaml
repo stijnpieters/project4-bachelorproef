@@ -16,6 +16,8 @@ spec:
         app: webapp
     spec:
       containers:
+      - imagePullSecrets:
+          - name: registry-crt
       - args:
         - uwsgi
         - --ini
