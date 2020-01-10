@@ -16,9 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - imagePullSecrets:
-        - name: registry-crt
-      - image: eu.gcr.io/project4-bachelerproef/webapp-nginx:latest
+      - image: webapp-nginx:latest
         name: nginx
         ports:
         - containerPort: 80
