@@ -1,0 +1,8 @@
+stages:
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: python:latest
+      shellScript: python pytest.py
+timeout: 60
+notification: {}
