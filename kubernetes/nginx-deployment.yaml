@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: 10.25.0.12/stijnp/webapp-nginx:latest
+      - image: 10.25.0.12/webapp-nginx:latest
         name: nginx
         ports:
         - containerPort: 80
