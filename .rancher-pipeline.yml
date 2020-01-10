@@ -1,0 +1,12 @@
+stages:
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: python:latest
+      shellScript: python pytest.py
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./kubernetes/webapp-deployment.yaml
+timeout: 60
+notification: {}
