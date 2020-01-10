@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: admin/webapp-nginx:latest
+      - image: rancher/project4-webapp:latest
         name: nginx
         ports:
         - containerPort: 80
