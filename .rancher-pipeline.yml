@@ -7,12 +7,12 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./nginx/Dockerfile
       buildContext: .
-      tag: stijnp/basic-webapp
+      tag: eu.gcr.io/project4-bachelerproef/basic-webapp
       registry: 127.0.0.1:34615
   - publishImageConfig:
       dockerfilePath: ./web/Dockerfile
       buildContext: .
-      tag: stijnp/webapp-nginx
+      tag: eu.gcr.io/project4-bachelerproef/webapp-nginx
       registry: 127.0.0.1:34615
 - name: Deploy
   steps:
