@@ -4,6 +4,16 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: python pytest.py
+  - publishImageConfig:
+      dockerfilePath: ./nginx/Dockerfile
+      buildContext: .
+      tag: stijnp/basic-webapp
+      registry: 127.0.0.1:34615
+  - publishImageConfig:
+      dockerfilePath: ./web/Dockerfile
+      buildContext: .
+      tag: stijnp/webapp-nginx
+      registry: 127.0.0.1:34615
 - name: Deploy
   steps:
   - applyYamlConfig:
