@@ -31,7 +31,7 @@ spec:
           value: "5432"
         - name: PG_USER
           value: student_user
-        image: stijnp/basic-webapp:latest
+        image: 10.132.0.11:443/stijnp/basic-webapp:latest
         name: webapp
         resources: {}
       restartPolicy: Always
