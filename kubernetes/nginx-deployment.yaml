@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: 127.0.0.1:34615/webapp-nginx:latest
+      - image: eu.gcr.io/project4-bachelerproef/webapp-nginx:latest
         name: nginx
         ports:
         - containerPort: 80
