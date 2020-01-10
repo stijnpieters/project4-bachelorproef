@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: docker-registry.p-t9c4v-pipeline/stijnp/webapp-nginx:latest
+      - image: 104.155.32.126/stijnp/webapp-nginx:latest
         name: nginx
         ports:
         - containerPort: 80
