@@ -4,6 +4,18 @@ stages:
   - runScriptConfig:
       image: python:latest
       shellScript: python pytest.py
+  - publishImageConfig:
+      dockerfilePath: ./web/Dockerfile
+      buildContext: ./web
+      tag: stijnpietersnmct/project4-webapp
+      pushRemote: true
+      registry: index.docker.io
+  - publishImageConfig:
+      dockerfilePath: ./nginx/Dockerfile
+      buildContext: ./nginx
+      tag: stijnpietersnmct/project4-nginx
+      pushRemote: true
+      registry: index.docker.io
 - name: Deploy
   steps:
   - applyYamlConfig:
