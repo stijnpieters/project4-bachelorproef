@@ -16,8 +16,8 @@ spec:
         app: webapp
     spec:
       containers:
-      - args:
-        - /bin/sh/ -c uwsgi --ini app.ini
+      command: ["/bin/sh"]
+      args: ["-c uwsgi --ini app.ini"]
         env:
         - name: PG_DATABASE
           value: labo
