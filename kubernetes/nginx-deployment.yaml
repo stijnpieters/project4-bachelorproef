@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: project4-nginx
+      - image: stijnpietersnmct/project4-nginx
         name: nginx
         ports:
         - containerPort: 80

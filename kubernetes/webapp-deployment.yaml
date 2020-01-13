@@ -31,7 +31,7 @@ spec:
           value: "5432"
         - name: PG_USER
           value: student_user
-        image: project4-webapp
+        image: stijnpietersnmct/project4-webapp
         name: webapp
         resources: {}
       restartPolicy: Always
