@@ -5,14 +5,14 @@ stages:
       image: python:latest
       shellScript: python pytest.py
   - publishImageConfig:
-      dockerfilePath: ./nginx/Dockerfile
-      buildContext: .
+      dockerfilePath: ./Dockerfile
+      buildContext: ./nginx/
       tag: stijnpietersnmct/project4-webapp:latest
       pushRemote: true
       registry: index.docker.io
   - publishImageConfig:
-      dockerfilePath: ./web/Dockerfile
-      buildContext: .
+      dockerfilePath: ./Dockerfile
+      buildContext: ./web/
       tag: stijnpietersnmct/project4-nginx:latest
       pushRemote: true
       registry: index.docker.io
