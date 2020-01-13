@@ -16,10 +16,7 @@ spec:
         app: webapp
     spec:
       containers:
-      - command:
-        - /bin/sh
-        args:
-        - -c
+      - args:
         - uwsgi
         - --ini
         - app.ini
