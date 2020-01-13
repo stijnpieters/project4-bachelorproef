@@ -4,7 +4,7 @@ WORKDIR '/app'
 
 RUN apk add --no-cache linux-headers g++ postgresql-dev gcc python3-dev musl-dev
 
-COPY ./web/requirements.txt ./
+COPY ./requirements.txt ./
 
 RUN pip3 wheel --wheel-dir=/root/wheels -r requirements.txt
 
@@ -22,9 +22,9 @@ RUN pip3 install --no-index --find-links=/root/wheels -r requirements.txt
 
 RUN apk add --no-cache postgresql-dev
 
-COPY ./web/entrypoint.sh .
+COPY ./entrypoint.sh .
 
-COPY ./web/ ./
+COPY ./ ./
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 
