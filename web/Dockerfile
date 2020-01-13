@@ -28,8 +28,8 @@ COPY ./ ./
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 
-RUN addgroup -S uwsgi && adduser -S uwsgi -G uwsgi
+#RUN addgroup -S uwsgi && adduser -S uwsgi -G uwsgi
 
-USER uwsgi
+#USER uwsgi
 
-CMD ["uwsgi", "--ini", "app.ini"]
+#CMD ["uwsgi", "--ini", "app.ini"]
