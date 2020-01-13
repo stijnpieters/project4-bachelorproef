@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: stijnpietersnmct/project4-nginx
+      - image: eslih/webapp-nginx:v1.0.1
         name: nginx
         ports:
         - containerPort: 80
