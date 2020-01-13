@@ -16,11 +16,7 @@ spec:
         app: webapp
     spec:
       containers:
-      - args:
-        - uwsgi
-        - --ini
-        - app.ini
-        env:
+      - env:
         - name: PG_DATABASE
           value: labo
         - name: PG_HOST
