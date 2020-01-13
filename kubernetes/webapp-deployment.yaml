@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - args:
-        - uwsgi
+        - /usr/local/bin/uwsgi
         - --ini
         - app.ini
         env:
