@@ -17,6 +17,7 @@ spec:
     spec:
       containers:
       - image: stijnpietersnmct/project4-nginx
+        imagePullPolicy: Always
         name: nginx
         ports:
         - containerPort: 80

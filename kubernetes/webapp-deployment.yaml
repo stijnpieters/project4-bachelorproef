@@ -32,6 +32,7 @@ spec:
         - name: PG_USER
           value: student_user
         image: stijnpietersnmct/project4-webapp
+        imagePullPolicy: Always
         name: webapp
         resources: {}
       restartPolicy: Always
