@@ -16,7 +16,7 @@ WORKDIR '/app'
 
 COPY --from=build-image /root/wheels /root/wheels
 
-COPY --from=build-image /app/requirements.txt ./
+#COPY --from=build-image /app/requirements.txt ./
 
 COPY ./requirements.txt ./
 RUN pip wheel --wheel-dir=/root/wheels -r requirements.txt
