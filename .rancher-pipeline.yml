@@ -7,13 +7,15 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./nginx/Dockerfile
       buildContext: .
-      tag: project4-webapp:latest
-      registry: 127.0.0.1:34615
+      tag: stijnpietersnmct/project4-webapp:latest
+      pushRemote: true
+      registry: index.docker.io
   - publishImageConfig:
       dockerfilePath: ./web/Dockerfile
       buildContext: .
-      tag: project4-nginx:latest
-      registry: 127.0.0.1:34615
+      tag: stijnpietersnmct/project4-nginx:latest
+      pushRemote: true
+      registry: index.docker.io
 - name: Deploy
   steps:
   - applyYamlConfig:
