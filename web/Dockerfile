@@ -2,7 +2,7 @@ FROM python:3.7-alpine as build-image
 
 WORKDIR '/app'
 
-RUN apk add --no-cache linux-headers g++ postgresql-dev gcc python3-dev musl-dev
+RUN apk add --no-cache linux-headers g++ postgresql-dev gcc python3-dev musl-dev uwsgi
 
 COPY ./web/requirements.txt ./
 
@@ -24,7 +24,7 @@ RUN apk add --no-cache postgresql-dev
 
 COPY ./web/entrypoint.sh .
 
-COPY ./ ./
+COPY ./web/ ./
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 
