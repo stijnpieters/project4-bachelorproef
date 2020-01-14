@@ -16,6 +16,15 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
+<style>
+    .c-navbar-link {
+        font-size: 0.8em;
+    }
+    .c-navbar-link:hover {
+        color: #007bff;
+    }
+</style>
+
 <body>
 
 <header>
@@ -24,16 +33,16 @@
             <a style="border-right: 1px solid white; padding-right: 24px;" href="/" class="navbar-brand d-flex align-items-center">
                 <strong>Some cool Docker App</strong>
             </a>
-             <a style="font-size: 0.8em;" href="/login" class="navbar-brand d-flex align-items-center">
+             <a href="/login" class="c-navbar-link navbar-brand d-flex align-items-center">
                 <strong>Login</strong>
             </a>
-             <a style="font-size: 0.8em;" href="/registration" class="navbar-brand d-flex align-items-center">
+             <a href="/registration" class="navbar-brand d-flex align-items-center">
                 <strong>Registration</strong>
             </a>
-            <a style="font-size: 0.8em;" href="/prime" class="navbar-brand d-flex align-items-center">
+            <a href="/prime" class="navbar-brand d-flex align-items-center">
                 <strong>Prime</strong>
             </a>
-             <a style="font-size: 0.8em;" href="/cats" class="navbar-brand d-flex align-items-center">
+             <a href="/cats" class="navbar-brand d-flex align-items-center">
                 <strong>Cats</strong>
             </a>
         </div>
