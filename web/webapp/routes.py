@@ -12,16 +12,11 @@ def inject_hostname():
     return dict(hostname=socket.gethostname())
 
 @app.after_request
-def add_header(r):
-    """
-    Add headers to both force latest IE rendering engine or Chrome Frame,
-    and also to cache the rendered page for 10 minutes.
-    """
-    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    r.headers["Pragma"] = "no-cache"
-    r.headers["Expires"] = "0"
-    r.headers['Cache-Control'] = 'public, max-age=0'
-    return r
+def add_header(response):    
+  response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
+  if ('Cache-Control' not in response.headers):
+    response.headers['Cache-Control'] = 'public, max-age=600'
+  return response
 
 
 @app.route('/')
@@ -120,7 +115,8 @@ def prime(lower=0, upper=10000):
 def cat():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
     cats = [
         "https://www.metronieuws.nl/scale/AuZd0fUk1AT4wkjkduvV-v4dA30=/648x345/smart/filters:format(jpeg)/www.metronieuws.nl%2Fobjectstore%2Ffield%2Fimage%2Fd52b3f5401f91de0c94a92743c35f86b-1472038829.png",
         "https://images3.persgroep.net/rcs/6sClJJd-Cf4lWfMs-ENjwWYA6As/diocontent/106227942/_crop/0/0/741/555/_fitwidth/763?appId=2dc96dd3f167e919913d808324cbfeb2&quality=0.8",
