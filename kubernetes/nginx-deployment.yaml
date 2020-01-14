@@ -17,7 +17,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: stijnpietersnmct/project4-nginx:dev
+      - image: stijnpietersnmct/project4-nginx:v119
         imagePullPolicy: Always
         name: nginx
         ports:
