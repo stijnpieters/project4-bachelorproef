@@ -7,13 +7,13 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./web/Dockerfile
       buildContext: ./web
-      tag: stijnpietersnmct/project4-webapp:v${CICD_EXECUTION_SEQUENCE}
+      tag: stijnpietersnmct/project4-webapp:v1.0.${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: index.docker.io
   - publishImageConfig:
       dockerfilePath: ./nginx/Dockerfile
       buildContext: ./nginx
-      tag: stijnpietersnmct/project4-nginx:v${CICD_EXECUTION_SEQUENCE}
+      tag: stijnpietersnmct/project4-nginx:v1.0.${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: index.docker.io
 - name: Deploy
