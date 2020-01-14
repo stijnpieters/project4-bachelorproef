@@ -12,7 +12,6 @@ spec:
       app: webapp
   strategy:
     type: RollingUpdate
-    maxUnavailable: 1
   template:
     metadata:
       labels:
