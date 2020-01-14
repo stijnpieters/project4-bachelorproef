@@ -4,7 +4,6 @@ from .models import db, User
 import socket
 import time
 import threading
-import requests
 from random import randint
 
 
@@ -118,9 +117,7 @@ def cat():
 
     r = randint(0, len(cats) - 1)
     
-    img = requests.get("https://cataas.com/cat")
-
-    return render_template('cats.html', cat=img)
+    return render_template('cats.html', cat="https://cataas.com/cat")
 
 
 @app.route('/logout')
