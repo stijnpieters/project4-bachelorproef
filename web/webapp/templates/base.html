@@ -24,6 +24,10 @@
         color: #007bff !important;
         text-decoration: underline;
     }
+    .c-navbar-image {
+        height: 60px;
+        margin-right: 16px;
+    }
 </style>
 
 <body>
@@ -32,6 +36,7 @@
     <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
             <a style="border-right: 1px solid white; padding-right: 24px;" href="/" class="navbar-brand d-flex align-items-center">
+                <img class="c-navbar-image" src="{{ url_for('static', filename='nmct.png') }}" alt="nmct logo"/>
                 <strong>Some cool Docker App</strong>
             </a>
              <a href="/login" class="c-navbar-link navbar-brand d-flex align-items-center">
