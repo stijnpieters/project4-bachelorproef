@@ -1,9 +1,10 @@
-from flask import url_for, render_template, request, redirect, session, g, requests
+from flask import url_for, render_template, request, redirect, session, g
 from flask import current_app as app
 from .models import db, User
 import socket
 import time
 import threading
+import requests
 from random import randint
 
 
