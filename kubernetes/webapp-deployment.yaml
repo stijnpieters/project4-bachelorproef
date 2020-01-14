@@ -16,6 +16,7 @@ spec:
     metadata:
       labels:
         app: webapp
+        gitcommit: ${CICD_GIT_COMMIT}
     spec:
       containers:
       - args:
