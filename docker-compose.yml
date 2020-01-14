@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   webapp:
-    #image: eslih/basic-webapp:v1.0.1
+    image: stijnpietersnmct/project4-webapp:v1.0.1
     build: ./web
     command: uwsgi --ini app.ini
     expose:
@@ -15,7 +15,7 @@ services:
     depends_on:
       - postgres
   nginx:
-    image: webapp-nginx
+    image: stijnpietersnmct/project4-nginx
     build: ./nginx
     ports:
       - 80:80
