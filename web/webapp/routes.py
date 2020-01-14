@@ -115,7 +115,7 @@ def cat():
         "https://i0.wp.com/vandaagindegeschiedenis.nl/wp-content/uploads-pvandag1/2013/06/garfield-560.jpg?ssl=1"
     ]
 
-    r = randint(0, 3)
+    r = randint(0, len(cats) - 1)
 
     return render_template('cats.html', cat=cats[r])
 
