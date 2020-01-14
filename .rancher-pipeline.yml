@@ -7,13 +7,13 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./web/Dockerfile
       buildContext: ./web
-      tag: stijnpietersnmct/project4-webapp:v1.0.0
+      tag: stijnpietersnmct/project4-webapp:dev
       pushRemote: true
       registry: index.docker.io
   - publishImageConfig:
       dockerfilePath: ./nginx/Dockerfile
       buildContext: ./nginx
-      tag: stijnpietersnmct/project4-nginx:v1.0.0
+      tag: stijnpietersnmct/project4-nginx:dev
       pushRemote: true
       registry: index.docker.io
 - name: Deploy
