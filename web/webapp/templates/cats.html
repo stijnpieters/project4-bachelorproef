@@ -6,8 +6,17 @@
     <h1 class="jumbotron-heading">Cats</h1>
     <p class="lead text-muted">Look! A cat!</p>
 
-    <img src="{{ cat }}" class="img-fluid" alt="Responsive image">
+    <img id="cat" src="https://cataas.com/cat" class="img-fluid" alt="Responsive image">
 
-    <button onClick="window.location.reload(true);">Refresh Page</button>
+    <input type="submit" value="Refresh" onClick="updateImage()" />
+
+    <script>
+        var image = document.querySelector("#cat");
+        function updateImage()
+        {
+            image.src = "https://cataas.com/cat?" + new Date().getTime();
+            console.log("test");
+        }
+     </script>
 
 {% endblock %}
