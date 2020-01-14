@@ -1,4 +1,4 @@
-from flask import url_for, render_template, request, redirect, session, g
+from flask import url_for, render_template, request, redirect, session, g, requests
 from flask import current_app as app
 from .models import db, User
 import socket
@@ -116,8 +116,10 @@ def cat():
     ]
 
     r = randint(0, len(cats) - 1)
+    
+    img = requests.get("https://cataas.com/cat")
 
-    return render_template('cats.html', cat=cats[r])
+    return render_template('cats.html', cat=img)
 
 
 @app.route('/logout')
