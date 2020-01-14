@@ -7,7 +7,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./web/Dockerfile
       buildContext: ./web
-      tag: stijnpietersnmct/project4-webapp:v${CICD_EXECUTION_SEQUENCE}
+      tag: stijnpietersnmct/project4-webapp:${CICD_GIT_TAG}
       pushRemote: true
       registry: index.docker.io
   - publishImageConfig:
