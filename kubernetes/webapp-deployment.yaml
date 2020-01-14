@@ -34,7 +34,7 @@ spec:
           value: "5432"
         - name: PG_USER
           value: student_user
-        image: stijnpietersnmct/project4-webapp:latest
+        image: stijnpietersnmct/project4-webapp
         imagePullPolicy: Always
         name: webapp
         resources: {}
