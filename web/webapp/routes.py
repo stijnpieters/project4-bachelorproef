@@ -6,6 +6,10 @@ import time
 import threading
 from random import randint
 
+@app.after_request
+def add_header(response):
+    response.cache_control.no_cache = True
+    return response
 
 @app.context_processor
 def inject_hostname():
