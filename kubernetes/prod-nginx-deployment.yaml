@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+  namespace: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: stijnpietersnmct/project4-nginx
+        imagePullPolicy: Always
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}

@@ -4,15 +4,19 @@ metadata:
   labels:
     app: webapp
   name: webapp
+  namespace: development
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: webapp
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
         app: webapp
+        gitcommit: ${CICD_GIT_COMMIT}
     spec:
       containers:
       - args:
@@ -30,13 +34,8 @@ spec:
           value: "5432"
         - name: PG_USER
           value: student_user
-        image: eslih/basic-webapp:v1.0.9
+        image: stijnpietersnmct/project4-webapp
+        imagePullPolicy: Always
         name: webapp
-        resources: 
-          requests:
-            memory: "64Mi"
-            cpu: "10m"
-          limits:
-            memory: "128Mi"
-            cpu: "50m"
+        resources: {}
       restartPolicy: Always

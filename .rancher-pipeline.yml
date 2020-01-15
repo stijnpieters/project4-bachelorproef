@@ -19,6 +19,7 @@ stages:
 - name: Deploy
   steps:
   - applyYamlConfig:
+
       path: ./kubernetes/prod-webapp-deployment.yaml
   - applyYamlConfig:
       path: ./kubernetes/prod-nginx-deployment.yaml
