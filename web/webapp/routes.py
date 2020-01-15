@@ -53,6 +53,7 @@ def users():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
+        session['logged_in'] = False
         return render_template('login.html')
     else:
         username = request.form['username']
@@ -72,6 +73,7 @@ def login():
 
 @app.route('/registration', methods=['GET', 'POST'])
 def register():
+    session['logged_in'] = False
     if request.method == 'POST':
         try:
             data = User.query.filter_by(username=request.form['username']).first()

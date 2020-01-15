@@ -131,12 +131,13 @@
 </svg>
                     <div class="c-dropdown-content">
                         {% if session['logged_in'] %}
+                            <a class="c-dropdown-content__link" href="/users">Users</a>
                             <a class="c-dropdown-content__link" href="/logout">Logout</a>
                         {% else %}
-                        {% if request.path!="/login" and request.path!="/registration" %}
+{#                        {% if request.path!="/login" and request.path!="/registration" %}#}
                             <a class="c-dropdown-content__link" href="/login">Login</a>
                             <a class="c-dropdown-content__link" href="/registration">Register</a>
-                        {% endif %}
+{#                        {% endif %}#}
                         {% endif %}
                     </div>
                 </div>
