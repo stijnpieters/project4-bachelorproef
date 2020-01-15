@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Coolest Docker Example Ever!</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<style>
+    .c-navbar-link {
+        font-size: 1.1em;
+        height: 48px;
+    }
+    .c-navbar-link:hover {
+        color: #007bff !important;
+    }
+    .c-navbar-image {
+        height: 60px;
+        margin-right: 16px;
+    }
+    .c-navbar-navbuttons {
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+    .c-navbar-navbuttons__pages {
+        display: flex;
+        justify-content: space-evenly;
+        width: 160px;
+    }
+    .c-navbar-profile__img {
+        width: 64px;
+        height: 64px;
+    }
+    .c-navbar-profile__img {
+        cursor: pointer;
+    }
+    .c-dropdown {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        margin-left: -96px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .c-dropdown-content {
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+    }
+    .c-dropdown-content__link {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .c-dropdown-content__link:hover {
+        text-decoration: none;
+        background: #d9d9d9;
+    }
+    .c-dropdown-content__svg {
+        background: none;
+        height: 11px;
+    }
+    .show {
+        display: flex;
+    }
+</style>
+
+<body>
+
+<header>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-start">
+            <a style="border-right: 1px solid white; padding-right: 24px;" href="/" class="navbar-brand d-flex align-items-center">
+                <img class="c-navbar-image" src="{{ url_for('static', filename='mct_logo.png') }}" alt="nmct logo"/>
+                <strong>Some cool Docker App</strong>
+            </a>
+            <div class="align-items-center c-navbar-navbuttons">
+            <div class="c-navbar-navbuttons__pages">
+                <a href="/prime" class="c-navbar-link navbar-brand d-flex align-items-center">
+                    <strong>Prime</strong>
+                </a>
+                 <a href="/cats" class="c-navbar-link navbar-brand d-flex align-items-center">
+                    <strong>Cats</strong>
+                </a>
+            </div>
+            <div>
+
+                <img id="profilebtn" onClick="showProfileMenu()" class="c-navbar-profile__img" src="{{ url_for('static', filename='profile.png') }}" alt="profile" />
+
+                <div id="dropdown" class="c-dropdown">
+                    <svg class="c-dropdown-content__svg"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="64"
+   height="32"
+   viewBox="0 0 16.933333 8.466667"
+   version="1.1"
+   id="svg8">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     transform="matrix(0.69383673,0,0,0.40058682,0.9082377,0.75166675)"
+     d="m 23.09635,19.259274 -24.4053578,0 12.2026788,-21.1356597 z"
+     id="path37"
+     style="fill:#f1f1f1;stroke-width:0.26458335;fill-opacity:1" />
+</svg>
+                    <div class="c-dropdown-content">
+                        {% if session['logged_in'] %}
+                            <a class="c-dropdown-content__link" href="/users">Users</a>
+                            <a class="c-dropdown-content__link" href="/logout">Logout</a>
+                        {% else %}
+{#                        {% if request.path!="/login" and request.path!="/registration" %}#}
+                            <a class="c-dropdown-content__link" href="/login">Login</a>
+                            <a class="c-dropdown-content__link" href="/registration">Register</a>
+{#                        {% endif %}#}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function showProfileMenu() {
+          document.querySelector("#dropdown").classList.toggle("show");
+
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('#profilebtn')) {
+            var dropdowns = document.getElementsByClassName("c- dropdown");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
+</header>
+
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            {% block content %}{% endblock %}
+            <p>
+                {% if session['logged_in'] %}
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                {% else %}
+                    {% if request.path!="/login" and request.path!="/registration" %}
+                        <a href="/login" class="btn btn-primary">Login</a>
+                        <a href="/registration" class="btn btn-secondary">Register</a>
+                    {% endif %}
+                {% endif %}
+            </p>
+            <p>
+                <span class="badge badge-info">Hostname: {{ hostname }} | Request time: {{ g.request_time() }}</span>
+                {% if session['logged_in'] %}
+                    <a href="/users" class="badge badge-light">Users overview</a>
+                {% endif %}
+            </p>
+            <p class="font-weight-light">Version 1.0.9</p>
+        </div>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,34 @@
+stages:
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: python:latest
+      shellScript: python pytest.py
+  - publishImageConfig:
+      dockerfilePath: ./web/Dockerfile
+      buildContext: ./web
+      tag: stijnpietersnmct/project4-webapp
+      pushRemote: true
+      registry: index.docker.io
+  - publishImageConfig:
+      dockerfilePath: ./nginx/Dockerfile
+      buildContext: ./nginx
+      tag: stijnpietersnmct/project4-nginx
+      pushRemote: true
+      registry: index.docker.io
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./kubernetes/webapp-deployment.yaml
+  - applyYamlConfig:
+      path: ./kubernetes/nginx-deployment.yaml
+  - applyYamlConfig:
+      path: ./kubernetes/postgres-deployment.yaml
+  - applyYamlConfig:
+      path: ./kubernetes/nginx-service.yaml
+  - applyYamlConfig:
+      path: ./kubernetes/postgres-service.yaml
+  - applyYamlConfig:
+      path: ./kubernetes/webapp-service.yaml
+timeout: 60
+notification: {}

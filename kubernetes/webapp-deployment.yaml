@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp
+  name: webapp
+  namespace: basic-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: webapp
+        gitcommit: ${CICD_GIT_COMMIT}
+    spec:
+      containers:
+      - args:
+        - uwsgi
+        - --ini
+        - app.ini
+        env:
+        - name: PG_DATABASE
+          value: labo
+        - name: PG_HOST
+          value: postgres
+        - name: PG_PASSWORD
+          value: student_password
+        - name: PG_PORT
+          value: "5432"
+        - name: PG_USER
+          value: student_user
+        image: stijnpietersnmct/project4-webapp
+        imagePullPolicy: Always
+        name: webapp
+        resources: {}
+      restartPolicy: Always
