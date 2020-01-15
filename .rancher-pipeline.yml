@@ -1,8 +1,5 @@
 stages:
 - name: Build
-  branch:
-    include: [ master ]
-    exclude: [ dev ]
   steps:
   - runScriptConfig:
       image: python:latest
@@ -34,4 +31,7 @@ stages:
   - applyYamlConfig:
       path: ./kubernetes/webapp-service.yaml
 timeout: 60
+branch:
+  include:
+  - pull
 notification: {}
