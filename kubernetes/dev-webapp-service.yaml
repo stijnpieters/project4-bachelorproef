@@ -4,7 +4,7 @@ metadata:
   labels:
     app: webapp
   name: webapp
-  namespace: basic-webapp
+  namespace: development
 spec:
   type: NodePort
   ports:
