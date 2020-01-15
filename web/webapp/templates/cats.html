@@ -6,16 +6,48 @@
     <h1 class="jumbotron-heading">Cats</h1>
     <p class="lead text-muted">Look! A cat!</p>
 
-    <img id="cat" src="https://cataas.com/cat" class="img-fluid" alt="Responsive image">
+    <div class="c-catpage-cat">
 
-    <input type="submit" value="Refresh" onClick="updateImage()" />
+        <img id="cat" src="https://cataas.com/cat" class="img-fluid c-catpage-catimage" alt="cat">
+        <input class="c-catpage-refreshbutton" type="submit" value="Get me a new cat!" onClick="updateImage()" />
 
+    </div>
+
+    <style>
+        .c-catpage-cat{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .c-catpage-refreshbutton {
+            font-size: 1.8em;
+            width: 320px;
+            border: none;
+            margin-bottom: 48px;
+            background: #dfe2e6;
+            transition: background-color;
+            transition-duration: 0.3s;
+            border-radius: 5px;
+            height: 64px;
+}
+        .c-catpage-refreshbutton:hover {
+            background-color: #d0d3d6;
+        }
+        .c-catpage-refreshbutton:active,
+        .c-catpage-refreshbutton:focus,
+        .c-catpage-refreshbutton:active:focus{
+            outline: none;
+        }
+        .c-catpage-catimage {
+            height: 420px;
+            margin-bottom: 24px;
+        }
+    </style>
     <script>
         var image = document.querySelector("#cat");
         function updateImage()
         {
             image.src = "https://cataas.com/cat?" + new Date().getTime();
-            console.log("test");
         }
      </script>
 
