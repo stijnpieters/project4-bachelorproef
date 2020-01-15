@@ -18,15 +18,48 @@
 
 <style>
     .c-navbar-link {
-        font-size: 0.93em;
+        font-size: 1.1em;
+        height: 48px;
     }
     .c-navbar-link:hover {
         color: #007bff !important;
-        text-decoration: underline;
     }
     .c-navbar-image {
         height: 60px;
         margin-right: 16px;
+    }
+    .c-navbar-navbuttons {
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+    .c-navbar-navbuttons__pages {
+        display: flex;
+        justify-content: space-evenly;
+        width: 160px;
+    }
+    .c-navbar-profile__img {
+        width: 64px;
+        height: 64px;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        margin-top: 11px;
+        margin-left: -96px;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .show {
+        display: block;
     }
 </style>
 
@@ -34,25 +67,59 @@
 
 <header>
     <div class="navbar navbar-dark bg-dark box-shadow">
-        <div class="container d-flex justify-content-between">
+        <div class="container d-flex justify-content-start">
             <a style="border-right: 1px solid white; padding-right: 24px;" href="/" class="navbar-brand d-flex align-items-center">
                 <img class="c-navbar-image" src="{{ url_for('static', filename='nmct.png') }}" alt="nmct logo"/>
                 <strong>Some cool Docker App</strong>
             </a>
-             <a href="/login" class="c-navbar-link navbar-brand d-flex align-items-center">
-                <strong>Login</strong>
-            </a>
-             <a href="/registration" class="c-navbar-link navbar-brand d-flex align-items-center">
-                <strong>Registration</strong>
-            </a>
-            <a href="/prime" class="c-navbar-link navbar-brand d-flex align-items-center">
-                <strong>Prime</strong>
-            </a>
-             <a href="/cats" class="c-navbar-link navbar-brand d-flex align-items-center">
-                <strong>Cats</strong>
-            </a>
+            <div class="align-items-center c-navbar-navbuttons">
+            <div class="c-navbar-navbuttons__pages">
+                <a href="/prime" class="c-navbar-link navbar-brand d-flex align-items-center">
+                    <strong>Prime</strong>
+                </a>
+                 <a href="/cats" class="c-navbar-link navbar-brand d-flex align-items-center">
+                    <strong>Cats</strong>
+                </a>
+            </div>
+            <div>
+                <img id="profilebtn" onClick="showProfileMenu()" class="c-navbar-profile__img" src="{{ url_for('static', filename='profile.png') }}" alt="profile" />
+                <div id="dropdown" class="dropdown-content">
+                    {% if session['logged_in'] %}
+                        <a href="/logout">Logout</a>
+                    {% else %}
+                    {% if request.path!="/login" and request.path!="/registration" %}
+                        <a href="/login">Login</a>
+                        <a href="/registration">Register</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function showProfileMenu() {
+          document.querySelector("#dropdown").classList.toggle("show");
+
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('#profilebtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
 </header>
 
 <main role="main">
