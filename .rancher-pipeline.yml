@@ -1,5 +1,8 @@
 stages:
 - name: Build
+  branch:
+    include: [ dev ]
+    exclude: [ master ]
   steps:
   - runScriptConfig:
       image: python:latest
