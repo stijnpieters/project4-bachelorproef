@@ -42,24 +42,36 @@
         width: 64px;
         height: 64px;
     }
-    .dropdown-content {
+    .c-dropdown {
         display: none;
         position: absolute;
+        z-index: 1;
+        margin-left: -96px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .c-dropdown-content {
         background-color: #f1f1f1;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        margin-top: 11px;
-        margin-left: -96px;
+
     }
-    .dropdown-content a {
+    .c-dropdown-content__link {
       color: black;
       padding: 12px 16px;
       text-decoration: none;
       display: block;
     }
+    .c-dropdown-content__link:hover {
+        text-decoration: none;
+        background: #d9d9d9;
+    }
+    .c-dropdown-content__svg {
+        background: none;
+        height: 11px;
+    }
     .show {
-        display: block;
+        display: flex;
     }
 </style>
 
@@ -82,16 +94,51 @@
                 </a>
             </div>
             <div>
+
                 <img id="profilebtn" onClick="showProfileMenu()" class="c-navbar-profile__img" src="{{ url_for('static', filename='profile.png') }}" alt="profile" />
-                <div id="dropdown" class="dropdown-content">
-                    {% if session['logged_in'] %}
-                        <a href="/logout">Logout</a>
-                    {% else %}
-                    {% if request.path!="/login" and request.path!="/registration" %}
-                        <a href="/login">Login</a>
-                        <a href="/registration">Register</a>
-                    {% endif %}
-                    {% endif %}
+
+                <div id="dropdown" class="c-dropdown">
+                    <svg class="c-dropdown-content__svg"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="64"
+   height="32"
+   viewBox="0 0 16.933333 8.466667"
+   version="1.1"
+   id="svg8">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     transform="matrix(0.69383673,0,0,0.40058682,0.9082377,0.75166675)"
+     d="m 23.09635,19.259274 -24.4053578,0 12.2026788,-21.1356597 z"
+     id="path37"
+     style="fill:#f1f1f1;stroke-width:0.26458335;fill-opacity:1" />
+</svg>
+                    <div class="c-dropdown-content">
+                        {% if session['logged_in'] %}
+                            <a class="c-dropdown-content__link" href="/logout">Logout</a>
+                        {% else %}
+                        {% if request.path!="/login" and request.path!="/registration" %}
+                            <a class="c-dropdown-content__link" href="/login">Login</a>
+                            <a class="c-dropdown-content__link" href="/registration">Register</a>
+                        {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,7 +156,7 @@
         // Close the dropdown menu if the user clicks outside of it
         window.onclick = function(event) {
           if (!event.target.matches('#profilebtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var dropdowns = document.getElementsByClassName("c- dropdown-content");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
               var openDropdown = dropdowns[i];
