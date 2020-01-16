@@ -19,7 +19,6 @@ stages:
 - name: Deploy
   steps:
   - applyYamlConfig:
-
       path: ./kubernetes/prod-webapp-deployment.yaml
   - applyYamlConfig:
       path: ./kubernetes/prod-nginx-deployment.yaml
@@ -34,7 +33,7 @@ stages:
 timeout: 60
 branch:
   include:
-  - master
-  exclude:
   - dev
+  exclude:
+  - master
 notification: {}
