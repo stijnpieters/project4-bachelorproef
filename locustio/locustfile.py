@@ -1,7 +1,11 @@
 from locust import HttpLocust, TaskSet, task, between
+from random import random
+
+counter = 0
 
 
 class UserBehavior(TaskSet):
+
     def on_start(self):
         """ on_start is called when a Locust start before any task is scheduled """
         self.login()
@@ -11,10 +15,13 @@ class UserBehavior(TaskSet):
         self.logout()
 
     def login(self):
-        self.client.post("/login", {"username": "stijn", "password": "stijn"})
+        global counter
+        self.client.post("/registration", {"username": "stijn" + str(counter), "password": "stijn"})
+        self.client.post("/login", {"username": "stijn" + str(counter), "password": "stijn"})
+        counter += 1
 
     def logout(self):
-        self.client.post("/logout", {"username": "stijn", "password": "stijn"})
+        self.client.post("/logout")
 
     @task(2)
     def index(self):
@@ -27,4 +34,4 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
-    wait_time = between(1, 3)
+    wait_time = between(5, 9)
