@@ -19,17 +19,17 @@ stages:
 - name: Deploy
   steps:
   - applyYamlConfig:
-      path: ./kubernetes/prod-webapp-deployment.yaml
+      path: ./kubernetes/dev-webapp-deployment.yaml
   - applyYamlConfig:
-      path: ./kubernetes/prod-nginx-deployment.yaml
+      path: ./kubernetes/dev-nginx-deployment.yaml
   - applyYamlConfig:
-      path: ./kubernetes/prod-postgres-deployment.yaml
+      path: ./kubernetes/dev-postgres-deployment.yaml
   - applyYamlConfig:
-      path: ./kubernetes/prod-nginx-service.yaml
+      path: ./kubernetes/dev-nginx-service.yaml
   - applyYamlConfig:
-      path: ./kubernetes/prod-postgres-service.yaml
+      path: ./kubernetes/dev-postgres-service.yaml
   - applyYamlConfig:
-      path: ./kubernetes/prod-webapp-service.yaml
+      path: ./kubernetes/dev-webapp-service.yaml
 timeout: 60
 branch:
   include:
