@@ -10,7 +10,6 @@ spec:
   selector:
     matchLabels:
      app: postgres
-     gitcommit: ${CICD_GIT_COMMIT}
   strategy: {}
   template:
     metadata:
@@ -20,6 +19,7 @@ spec:
       creationTimestamp: null
       labels:
         app: postgres
+        gitcommit: ${CICD_GIT_COMMIT}
     spec:
       containers:
       - env:
