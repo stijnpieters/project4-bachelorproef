@@ -30,7 +30,14 @@ spec:
         - name: POSTGRES_USER
           value: student_user
         image: postgres:12.1-alpine
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: webapp-postgres
         name: postgres
         resources: {}
+      volumes:
+        - name: webapp-postgres
+          persistentVolumeClaim:
+            claimName: webapp-postgres
       restartPolicy: Always
 status: {}
