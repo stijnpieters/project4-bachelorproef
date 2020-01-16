@@ -32,12 +32,12 @@ spec:
         image: postgres:12.1-alpine
         volumeMounts:
           - mountPath: /var/lib/postgresql/data
-            name: webapp-postgres
+            name: postgres-pv-claim
         name: postgres
         resources: {}
       volumes:
-        - name: webapp-postgres
+        - name: postgres-pv-claim
           persistentVolumeClaim:
-            claimName: webapp-postgres
+            claimName: postgres-pv-claim
       restartPolicy: Always
 status: {}
