@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="alert alert-success" role="alert">
+        <strong>New!</strong> Check-out this cool <a href="/prime">prime generator</a>!
+    </div>
+    <h1 class="jumbotron-heading">Dogs</h1>
+    <p class="lead text-muted">Look! A dog!</p>
+
+    <div class="c-dogpage-dog">
+
+        <img id="dog" src="https://dogaas.com/dog" class="img-fluid c-dogpage-dogimage" alt="dog">
+        <input class="c-dogpage-refreshbutton" type="submit" value="Get me a new dog!" onClick="updateImage()" />
+
+    </div>
+
+    <style>
+        .c-dogpage-dog{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .c-dogpage-refreshbutton {
+            font-size: 1.8em;
+            width: 320px;
+            border: none;
+            margin-bottom: 48px;
+            background: #dfe2e6;
+            transition: background-color;
+            transition-duration: 0.3s;
+            border-radius: 5px;
+            height: 64px;
+}
+        .c-dogpage-refreshbutton:hover {
+            background-color: #d0d3d6;
+        }
+        .c-dogpage-refreshbutton:active,
+        .c-dogpage-refreshbutton:focus,
+        .c-dogpage-refreshbutton:active:focus{
+            outline: none;
+        }
+        .c-dogpage-dogimage {
+            height: 420px;
+            margin-bottom: 24px;
+        }
+    </style>
+    <script>
+    function updateImage() {
+        fetch('https://dog.ceo/api/breeds/image/random')
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                console.log(myJson["message"]);
+            });
+    }
+     </script>
+
+{% endblock %}
