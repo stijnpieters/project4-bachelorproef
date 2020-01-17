@@ -44,15 +44,18 @@
         }
     </style>
     <script>
+    let dogPic = document.querySelector("#dog");
     function updateImage() {
         fetch('https://dog.ceo/api/breeds/image/random')
             .then((response) => {
                 return response.json();
             })
             .then((myJson) => {
-                console.log(myJson["message"]);
+                dogPic.src = myJson["message"]
+
             });
     }
+    updateImage()
      </script>
 
 {% endblock %}

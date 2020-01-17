@@ -4,7 +4,6 @@ from .models import db, User
 import socket
 import time
 import threading
-import requests
 from random import randint
 
 

@@ -1,5 +1,4 @@
 from locust import HttpLocust, TaskSet, task, between
-from random import random
 
 counter = 0
 
