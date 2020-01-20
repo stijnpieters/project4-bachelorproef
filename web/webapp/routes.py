@@ -68,7 +68,8 @@ def login():
                 return render_template('index.html', data={'username': username, 'password': password})
 
         except Exception as e:
-            return "Some very good exception handling!"
+            # return "Some very good exception handling!"
+            return e
 
 
 @app.route('/registration', methods=['GET', 'POST'])

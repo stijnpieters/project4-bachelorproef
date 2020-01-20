@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <script>
-    let dogPic = document.querySelector("#dog");
     function updateImage() {
+        let dogPic = document.querySelector("#dog");
         fetch('https://dog.ceo/api/breeds/image/random')
             .then((response) => {
                 return response.json();
