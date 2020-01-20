@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
+    <script>
+    let dogPic = document.querySelector("#dog");
+    function updateImage() {
+        fetch('https://dog.ceo/api/breeds/image/random')
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                dogPic.src = myJson["message"]
+
+            });
+    }
+    window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    });
+     </script>
     <div class="alert alert-success" role="alert">
         <strong>New!</strong> Check-out this cool <a href="/prime">prime generator</a>!
     </div>
@@ -43,21 +59,4 @@
             margin-bottom: 24px;
         }
     </style>
-    <script>
-    let dogPic = document.querySelector("#dog");
-    function updateImage() {
-        fetch('https://dog.ceo/api/breeds/image/random')
-            .then((response) => {
-                return response.json();
-            })
-            .then((myJson) => {
-                dogPic.src = myJson["message"]
-
-            });
-    }
-    window.onload = function() {
-      updateImage();
-    };
-     </script>
-
 {% endblock %}
