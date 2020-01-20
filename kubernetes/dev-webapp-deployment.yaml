@@ -37,5 +37,6 @@ spec:
         image: stijnpietersnmct/project4-webapp
         imagePullPolicy: Always
         name: webapp
-        resources: {}
+        resources:
+          cpu: "200m"
       restartPolicy: Always

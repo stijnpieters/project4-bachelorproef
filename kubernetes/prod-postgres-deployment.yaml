@@ -30,6 +30,7 @@ spec:
           value: student_user
         image: postgres:12.1-alpine
         name: postgres
-        resources: {}
+        resources:
+          cpu: "200m"
       restartPolicy: Always
 status: {}
