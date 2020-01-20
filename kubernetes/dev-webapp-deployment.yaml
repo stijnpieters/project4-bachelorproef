@@ -39,5 +39,5 @@ spec:
         name: webapp
         resources:
           requests:
-            cpu: "150m"
+            cpu: "250m"
       restartPolicy: Always
