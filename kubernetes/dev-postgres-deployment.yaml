@@ -34,7 +34,9 @@ spec:
         name: postgres
         resources:
           requests:
-            cpu: "150m"
+            cpu: "300m"
+          limit:
+            cpu: "600m"
       volumes:
         - name: postgres-pv-claim
           persistentVolumeClaim:
