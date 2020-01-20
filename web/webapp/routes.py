@@ -60,6 +60,7 @@ def login():
         password = request.form['password']
         try:
             data = User.query.filter_by(username=username, password=password).first()
+            time.sleep(.1)
 
             if data is not None:
                 session['logged_in'] = True
