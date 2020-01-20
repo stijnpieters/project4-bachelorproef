@@ -34,7 +34,9 @@ spec:
           - mountPath: /var/lib/postgresql/data
             name: postgres-pv-claim
         name: postgres
-        resources: {}
+        resources:
+          requests:
+            cpu: "150m"
       volumes:
         - name: postgres-pv-claim
           persistentVolumeClaim:

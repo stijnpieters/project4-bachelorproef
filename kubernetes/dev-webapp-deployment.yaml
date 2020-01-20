@@ -38,5 +38,6 @@ spec:
         imagePullPolicy: Always
         name: webapp
         resources:
-          cpu: "200m"
+          requests:
+            cpu: "150m"
       restartPolicy: Always

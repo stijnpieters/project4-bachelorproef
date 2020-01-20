@@ -23,6 +23,7 @@ spec:
         ports:
         - containerPort: 80
         resources:
-          cpu: "200m"
+          requests:
+            cpu: "150m"
       restartPolicy: Always
 status: {}
