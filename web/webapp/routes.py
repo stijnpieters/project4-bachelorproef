@@ -7,13 +7,6 @@ import threading
 from random import randint
 
 
-@app.after_request
-def add_header(response):
-    response.cache_control.no_cache = True
-    response.cache_control.max_age = 0
-    return response
-
-
 @app.context_processor
 def inject_hostname():
     return dict(hostname=socket.gethostname())
