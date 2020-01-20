@@ -6,7 +6,6 @@ metadata:
   name: nginx
   namespace: development
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -24,6 +23,6 @@ spec:
         - containerPort: 80
         resources:
           requests:
-            cpu: "150m"
+            cpu: "250m"
       restartPolicy: Always
 status: {}
