@@ -69,7 +69,7 @@ def login():
 
         except Exception as e:
             # return "Some very good exception handling!"
-            return e
+            return str(e)
 
 
 @app.route('/registration', methods=['GET', 'POST'])
