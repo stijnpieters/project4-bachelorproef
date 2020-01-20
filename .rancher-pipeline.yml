@@ -30,6 +30,12 @@ stages:
       path: ./kubernetes/dev-postgres-service.yaml
   - applyYamlConfig:
       path: ./kubernetes/dev-webapp-service.yaml
+  - applyYamlConfig:
+      path: ./kubernetes/dev-webapp-autoscaler.yaml
+  - applyYamlConfig:
+      path: ./kubernetes/dev-postgres-autoscaler.yaml
+  - applyYamlConfig:
+      path: ./kubernetes/dev-nginx-autoscaler.yaml
 timeout: 60
 branch:
   include:
