@@ -20,7 +20,7 @@ class UserBehavior(TaskSet):
         counter += 1
 
     def logout(self):
-        self.client.post("/logout")
+        self.client.get("/logout")
 
     # haakjes slaan op "weight" van de task
     @task(1)
@@ -28,10 +28,10 @@ class UserBehavior(TaskSet):
         self.client.get("/")
 
     @task(1)
-    def cats(self):
-        self.client.get("/cats")
+    def dogs(self):
+        self.client.get("/dogs")
 
 
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
-    wait_time = between(10, 15)
+    wait_time = between(3, 5)

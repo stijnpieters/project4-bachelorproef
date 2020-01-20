@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: locust
+  name: locust
+  namespace: development
+spec:
+  selector:
+    matchLabels:
+      app: locust
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: locust
+    spec:
+      containers:
+      - image: stijnpietersnmct/project4-locust
+        imagePullPolicy: Always
+        env:
+          - name: LOCUST_MODE
+            value: slave
+          - name: LOCUST_MASTER_HOST
+            value: locustmaster
+          - name: TARGET_URL
+            value: "https://dev.stijnpieters.computer"
+          - name: LOCUST_OPTS
+            value: "--clients=10 --no-web --run-time=600"
+        name: locust
+        resources:
+          requests:
+            cpu: "150m"
+            memory: "64Mi"
+          limits:
+            cpu: "300m"
+            memory: "128Mi"
+      restartPolicy: Always
+status: {}

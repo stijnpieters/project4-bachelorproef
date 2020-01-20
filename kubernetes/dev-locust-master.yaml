@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: locust
+  name: locust
+  namespace: development
+spec:
+  selector:
+    matchLabels:
+      app: locust
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: locust
+    spec:
+      containers:
+      - image: stijnpietersnmct/project4-nginx
+        imagePullPolicy: Always
+        name: locust
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "150m"
+            memory: "64Mi"
+          limits:
+            cpu: "300m"
+            memory: "128Mi"
+      restartPolicy: Always
+status: {}
