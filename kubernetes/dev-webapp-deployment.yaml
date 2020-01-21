@@ -35,6 +35,16 @@ spec:
           value: student_user
         image: stijnpietersnmct/project4-webapp
         imagePullPolicy: Always
+        readinessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
         name: webapp
         resources:
           requests:

@@ -28,6 +28,16 @@ spec:
         - name: POSTGRES_USER
           value: student_user
         image: postgres:12.1-alpine
+        readinessProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 15
+            periodSeconds: 20
         name: postgres
         resources:
           requests:
