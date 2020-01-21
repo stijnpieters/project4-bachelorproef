@@ -19,12 +19,6 @@ spec:
       - image: stijnpietersnmct/project4-nginx
         imagePullPolicy: Always
         name: nginx
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 3
-          periodSeconds: 3
         ports:
         - containerPort: 80
         resources:
