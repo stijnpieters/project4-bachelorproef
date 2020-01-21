@@ -29,7 +29,7 @@ spec:
           value: student_user
         image: postgres:12.1-alpine
         volumeMounts:
-          - mountPath: /tmp
+          - mountPath: /var/lib/postgresql/data
             name: postgres-pv-claim
         name: postgres
         resources:
