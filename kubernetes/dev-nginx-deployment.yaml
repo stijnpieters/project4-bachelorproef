@@ -21,11 +21,8 @@ spec:
         name: nginx
         livenessProbe:
           httpGet:
-            path: /healthz
-            port: 8080
-            httpHeaders:
-              - name: Custom-Header
-                value: Awesome
+            path: /
+            port: 80
           initialDelaySeconds: 3
           periodSeconds: 3
         ports:
