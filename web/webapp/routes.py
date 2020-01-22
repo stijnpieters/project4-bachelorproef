@@ -7,13 +7,6 @@ import threading
 from random import randint
 
 
-@app.after_request
-def add_header(response):
-    response.cache_control.no_cache = True
-    response.cache_control.max_age = 0
-    return response
-
-
 @app.context_processor
 def inject_hostname():
     return dict(hostname=socket.gethostname())
@@ -117,16 +110,16 @@ def prime(lower=0, upper=10000):
 def cat():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    cats = [
-        "https://www.metronieuws.nl/scale/AuZd0fUk1AT4wkjkduvV-v4dA30=/648x345/smart/filters:format(jpeg)/www.metronieuws.nl%2Fobjectstore%2Ffield%2Fimage%2Fd52b3f5401f91de0c94a92743c35f86b-1472038829.png",
-        "https://images3.persgroep.net/rcs/6sClJJd-Cf4lWfMs-ENjwWYA6As/diocontent/106227942/_crop/0/0/741/555/_fitwidth/763?appId=2dc96dd3f167e919913d808324cbfeb2&quality=0.8",
-        "https://i0.wp.com/vandaagindegeschiedenis.nl/wp-content/uploads-pvandag1/2013/06/garfield-560.jpg?ssl=1"
-    ]
 
-    r = randint(0, len(cats) - 1)
-    
-    #return render_template('cats.html', cat="https://cataas.com/cat")
     return render_template('cats.html')
+
+
+@app.route('/dogs')
+def dog():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    return render_template('dogs.html')
 
 
 @app.route('/logout')

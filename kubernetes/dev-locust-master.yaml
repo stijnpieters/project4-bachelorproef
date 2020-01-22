@@ -2,29 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx
-  name: nginx
+    app: locust
+  name: locust
   namespace: development
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: locust
   strategy: {}
   template:
     metadata:
       labels:
-        app: nginx
+        app: locust
     spec:
       containers:
       - image: stijnpietersnmct/project4-nginx
         imagePullPolicy: Always
-        livenessProbe:
-          httpGet:
-            path: /_health
-            port: 80
-          initialDelaySeconds: 10
-          periodSeconds: 10
-        name: nginx
+        name: locust
         ports:
         - containerPort: 80
         resources:
