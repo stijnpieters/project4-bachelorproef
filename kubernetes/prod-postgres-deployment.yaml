@@ -37,7 +37,7 @@ spec:
             port: 5432
           initialDelaySeconds: 5
           periodSeconds: 10
-          livenessProbe:
+        livenessProbe:
             tcpSocket:
               port: 5432
             initialDelaySeconds: 15
