@@ -6,7 +6,6 @@ metadata:
   name: nginx
   namespace: production
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -19,9 +18,21 @@ spec:
       containers:
       - image: stijnpietersnmct/project4-nginx
         imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /_health
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
         name: nginx
         ports:
         - containerPort: 80
-        resources: {}
+        resources:
+          requests:
+            cpu: "150m"
+            memory: "64Mi"
+          limits:
+            cpu: "300m"
+            memory: "128Mi"
       restartPolicy: Always
 status: {}
