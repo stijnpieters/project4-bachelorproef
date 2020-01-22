@@ -6,7 +6,6 @@ metadata:
   name: webapp
   namespace: production
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: webapp
@@ -36,6 +35,22 @@ spec:
           value: student_user
         image: stijnpietersnmct/project4-webapp
         imagePullPolicy: Always
+        readinessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+            tcpSocket:
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
         name: webapp
-        resources: {}
+        resources:
+          requests:
+            cpu: "400m"
+            memory: "500Mi"
+          limits:
+            cpu: "800m"
+            memory: "1Gi"
       restartPolicy: Always

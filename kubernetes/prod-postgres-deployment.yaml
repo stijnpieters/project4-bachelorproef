@@ -4,9 +4,8 @@ metadata:
   labels:
     app: postgres
   name: postgres
-  namespace: production
+  namespace: development
 spec:
-  replicas: 1
   selector:
     matchLabels:
      app: postgres
@@ -29,7 +28,28 @@ spec:
         - name: POSTGRES_USER
           value: student_user
         image: postgres:12.1-alpine
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-pv-claim
         name: postgres
-        resources: {}
+        readinessProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 15
+            periodSeconds: 20
+        resources:
+          requests:
+            cpu: "300m"
+          limits:
+            cpu: "600m"
+      volumes:
+        - name: postgres-pv-claim
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
       restartPolicy: Always
 status: {}

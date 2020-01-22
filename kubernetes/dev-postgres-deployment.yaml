@@ -32,6 +32,16 @@ spec:
           - mountPath: /var/lib/postgresql/data
             name: postgres-pv-claim
         name: postgres
+        readinessProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 15
+            periodSeconds: 20
         resources:
           requests:
             cpu: "300m"
