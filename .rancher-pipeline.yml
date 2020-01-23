@@ -19,25 +19,25 @@ stages:
 - name: Deploy
   steps:
   - applyYamlConfig:
-      path: ./kubernetes/dev-webapp-deployment.yaml
+      path: ./kubernetes/prod-webapp-deployment.yaml
   - applyYamlConfig:
-      path: ./kubernetes/dev-nginx-deployment.yaml
+      path: ./kubernetes/prod-nginx-deployment.yaml
   - applyYamlConfig:
-      path: ./kubernetes/dev-postgres-deployment.yaml
+      path: ./kubernetes/prod-postgres-deployment.yaml
   - applyYamlConfig:
-      path: ./kubernetes/dev-nginx-service.yaml
+      path: ./kubernetes/prod-nginx-service.yaml
   - applyYamlConfig:
-      path: ./kubernetes/dev-postgres-service.yaml
+      path: ./kubernetes/prod-postgres-service.yaml
   - applyYamlConfig:
-      path: ./kubernetes/dev-webapp-service.yaml
+      path: ./kubernetes/prod-webapp-service.yaml
   - applyYamlConfig:
-      path: ./kubernetes/dev-webapp-autoscaler.yaml
+      path: ./kubernetes/prod-webapp-autoscaler.yaml
   - applyYamlConfig:
-      path: ./kubernetes/dev-nginx-autoscaler.yaml
+      path: ./kubernetes/prod-nginx-autoscaler.yaml
 timeout: 60
 branch:
   include:
-  - dev
-  exclude:
   - master
+  exclude:
+  - dev
 notification: {}
