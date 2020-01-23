@@ -37,7 +37,7 @@ stages:
 timeout: 60
 branch:
   include:
-  - master
-  exclude:
   - dev
+  exclude:
+  - master
 notification: {}
