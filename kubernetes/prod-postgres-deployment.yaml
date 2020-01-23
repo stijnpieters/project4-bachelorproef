@@ -4,7 +4,7 @@ metadata:
   labels:
     app: postgres
   name: postgres
-  namespace: development
+  namespace: production
 spec:
   selector:
     matchLabels:

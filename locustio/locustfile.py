@@ -1,4 +1,5 @@
 from locust import HttpLocust, TaskSet, task, between
+from locust.contrib.fasthttp import FastHttpLocust
 
 counter = 0
 
@@ -32,6 +33,6 @@ class UserBehavior(TaskSet):
         self.client.get("/dogs")
 
 
-class WebsiteUser(HttpLocust):
+class WebsiteUser(FastHttpLocust):
     task_set = UserBehavior
     wait_time = between(3, 5)
