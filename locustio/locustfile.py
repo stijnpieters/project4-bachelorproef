@@ -16,14 +16,14 @@ class UserBehavior(TaskSet):
 
     def login(self):
         global counter
-        self.client.post("/registration", {"username": "stijn" + str(counter), "password": "stijn"})
-        self.client.post("/login", {"username": "stijn" + str(counter), "password": "stijn"})
+        self.client.post("/registration", {"username": "user" + str(counter), "password": "password"})
+        self.client.post("/login", {"username": "user" + str(counter), "password": "password"})
         counter += 1
 
     def logout(self):
         self.client.get("/logout")
 
-    # haakjes slaan op "weight" van de task
+    # The number between brackets means the weight of the task
     @task(1)
     def index(self):
         self.client.get("/")
